@@ -1,0 +1,11 @@
+ja:
+  activerecord:
+    attributes:
+      user:
+        nickname: ニックネーム
+      meal:
+        name: 料理名
+        last_day: 最後に食べた日
+        link: 外部リンク
+      tag:
+        name: タグ名
