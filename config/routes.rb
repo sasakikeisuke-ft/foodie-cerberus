@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users
   root to: 'tests#index'
-  resources :meal
-  resources :tag
-  resources :log, only: [:index, :create, :update, :destroy]
+  resources :meals
+  resources :tags
+  resources :logs, only: [:index, :create, :update, :destroy]
 end
