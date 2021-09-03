@@ -5,6 +5,6 @@ class Calorie < ActiveHash::Base
     { id: 3, select: '高い' },
     { id: 4, select: '選択せず登録' }
   ]
-    include ActiveHash::Associations
+  include ActiveHash::Associations
   has_many :meals
 end

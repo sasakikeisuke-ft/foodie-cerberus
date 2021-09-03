@@ -1,6 +1,6 @@
 class Meal < ApplicationRecord
   with_options presence: true do
-    with_options numericality: { other_than: 0, message: "を選択してください" } do
+    with_options numericality: { other_than: 0, message: 'を選択してください' } do
       validates :price_id
       validates :calorie_id
     end
