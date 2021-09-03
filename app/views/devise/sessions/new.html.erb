@@ -1,0 +1,33 @@
+<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+  <body class="bg-light">
+    <div class="container">
+      <div class="py-5 text-center">
+        <h2>ログインページ</h2>
+      </div>
+      <%= render "devise/shared/error_messages", resource: resource %>
+      <div class="form-group">
+          <%= f.label :email, 'email', class: "form-label" %><br/>
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %>
+        <div class="invalid-feedback">
+          有効なメールアドレスを入力してください。
+        </div>
+      </div>
+      <div class="form-group">
+        <%= f.label :password, 'password', class: "form-label" %><br/>
+        <%= f.password_field :password, autocomplete: "current-password", class: "form-control" %>
+        <div class="invalid-feedback">
+          有効なパスワードを入力してください。
+        </div>
+      </div>
+      <div class="form-group">
+        <hr class="my-4">
+        <%= f.submit "ログイン", class: "w-100 btn btn-primary btn-md" %>
+      </div>
+    </div>
+  </body>
+<% end %>
+<div class="text-center">
+  <%= link_to '初めての方はこちらから', new_user_registration_path, class: "btn btn-secondary btn-sm" %>
+</div>
+
+<%= render "devise/shared/links" %>
