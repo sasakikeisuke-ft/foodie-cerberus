@@ -14,6 +14,6 @@ class Meal < ApplicationRecord
 
   # ActiveHash
   extend ActiveHash::Associations::ActiveRecordExtensions
-  belongs_to :price
-  belongs_to :calorie
+  belongs_to_active_hash :price
+  belongs_to_active_hash :calorie
 end
