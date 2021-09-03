@@ -10,7 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_09_03_130317) do
+ActiveRecord::Schema.define(version: 2021_09_03_131432) do
+
+  create_table "logs", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "meal_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["meal_id"], name: "index_logs_on_meal_id"
+    t.index ["user_id"], name: "index_logs_on_user_id"
+  end
 
   create_table "meal_tag_relations", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "meal_id"
@@ -55,6 +64,8 @@ ActiveRecord::Schema.define(version: 2021_09_03_130317) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "logs", "meals"
+  add_foreign_key "logs", "users"
   add_foreign_key "meal_tag_relations", "meals"
   add_foreign_key "meal_tag_relations", "tags"
   add_foreign_key "meals", "users"
