@@ -17,12 +17,12 @@ RSpec.describe Log, type: :model do
       it 'userが紐づけられていないと登録できない' do
         @log.user = nil
         @log.valid?
-        expect(@log.errors.full_messages).to include("Userを入力してください")
+        expect(@log.errors.full_messages).to include('Userを入力してください')
       end
       it 'mealが紐づけられていないと登録できない' do
         @log.meal = nil
         @log.valid?
-        expect(@log.errors.full_messages).to include("Mealを入力してください")
+        expect(@log.errors.full_messages).to include('Mealを入力してください')
       end
     end
   end
