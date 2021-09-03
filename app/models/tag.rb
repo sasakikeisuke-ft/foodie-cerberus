@@ -1,6 +1,6 @@
 class Tag < ApplicationRecord
   with_options presence: true do
-    validates :category_id, numericality: { other_than: 0, message: "を選択してください" }
+    validates :category_id, numericality: { other_than: 0, message: 'を選択してください' }
     validates :name, uniqueness: { case_sensitive: false, scope: :user_id }
   end
   belongs_to :user
