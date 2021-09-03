@@ -1,0 +1,2 @@
+class MealTagRelation < ApplicationRecord
+end
