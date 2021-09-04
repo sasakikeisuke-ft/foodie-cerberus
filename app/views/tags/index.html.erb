@@ -1,0 +1,25 @@
+tags#index
+<div class="container-md">
+  <% if @tags.empty? %>
+    タグはまだ登録されていません
+  <% else %>
+    <div class="table-responsive">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>タグ名</th>
+            <th>カテゴリー</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @tags.each do |tag| %>
+            <tr>
+              <th><%= link_to tag.name, tag_path(tag) %></th>
+              <td><%= tag.category.name_ja %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  <% end %>
+</div>
