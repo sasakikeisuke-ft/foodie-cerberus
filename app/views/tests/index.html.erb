@@ -10,10 +10,10 @@ mealsコントローラー<br>
 <% if @meals.empty? %>
   まだ食事は登録されていません。<br>
 <% else %>
-  <% @meals.each do |meal| %>
+  <% @meals.each_with_index do |meal, i| %>
     <%= link_to "editその#{i + 1}", edit_meal_path(meal) %><br>
   <% end %>
-  <% @meals.each do |meal| %>
+  <% @meals.each_with_index do |meal, i| %>
     <%= link_to "showその#{i + 1}", meal_path(meal) %><br>
   <% end %>
 <% end %>
