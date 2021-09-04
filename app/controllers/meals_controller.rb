@@ -34,7 +34,7 @@ class MealsController < ApplicationController
 
   def destroy
     @meal.destroy
-    redirect_to root_path
+    redirect_to meals_path
   end
 
   def show
