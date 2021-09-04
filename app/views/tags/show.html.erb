@@ -14,7 +14,7 @@ tags#show
   <div class="row">
     <% @tag.meals.each do |meal| %>
       <div class="col-md-4">
-        <%= meal.name %>
+        <%= link_to meal.name, withdraw_tag_path(meal_id: meal.id), method: :delete %>
       </div>
     <% end %>
   </div>

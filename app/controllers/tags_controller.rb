@@ -51,6 +51,12 @@ class TagsController < ApplicationController
     end
   end
 
+  def withdraw
+    meal_tag_relation = MealTagRelation.find_by(meal_id: params[:meal_id], tag_id: params[:id])
+    meal_tag_relation.destroy
+    redirect_to tag_path(params[:id])
+  end
+
   private
 
   def tag_params

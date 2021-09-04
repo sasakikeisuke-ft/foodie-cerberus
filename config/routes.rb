@@ -12,7 +12,9 @@ Rails.application.routes.draw do
   resources :tags do
     member do
       post 'join'
+      delete 'withdraw'
     end
   end
+
   resources :logs, only: [:index, :create, :update, :destroy]
 end
