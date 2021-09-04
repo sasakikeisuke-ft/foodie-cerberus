@@ -3,7 +3,7 @@ class TagsController < ApplicationController
   before_action :common_variable1, only: [:edit, :update, :destroy, :show]
 
   def index
-    @tags = Tag.where(user_id: current_user.id)
+    @tags = Tag.where(user_id: current_user.id).order(:category_id)
   end
 
   def new
@@ -13,9 +13,8 @@ class TagsController < ApplicationController
   def create
     @tag = Tag.new(tag_params)
     if @tag.save
-      redirect_to root_path
+      redirect_to tag_path(@tag)
     else
-
       tag_form_variable
       render :new
     end
@@ -26,9 +25,8 @@ class TagsController < ApplicationController
 
   def update
     if @tag.update(tag_params)
-      redirect_to root_path
+      redirect_to tag_path(@tag)
     else
-
       tag_form_variable
       render :edit
     end
@@ -36,7 +34,7 @@ class TagsController < ApplicationController
 
   def destroy
     @tag.destroy
-    redirect_to root_path
+    redirect_to tags_path
   end
 
   def show
