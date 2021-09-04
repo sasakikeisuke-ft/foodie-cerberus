@@ -3,7 +3,7 @@ class MealsController < ApplicationController
   before_action :common_variable1, only: [:edit, :update, :destroy, :show]
 
   def index
-    @meals = Meal.where(user_id: current_user.id)
+    @meals = Meal.where(user_id: current_user.id).order(:last_day)
   end
 
   def new
