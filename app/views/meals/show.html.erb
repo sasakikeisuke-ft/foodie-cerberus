@@ -1,1 +1,44 @@
-meals#showその
+meals#show
+<div class="container-md">
+  <h2><%= @meal.name %></h2>
+  <div class="table-responsive">
+    <table class="table">
+      <tbody>
+        <tr>
+          <th>値段</td>
+          <td><%= @meal.price.select %><td>
+        </tr>
+        <tr>
+          <th>大変さ</td>
+          <td><%= @meal.labor.select %><td>
+        </tr>
+        <tr>
+          <th>カロリー</td>
+          <td><%= @meal.calorie.select %><td>
+        </tr>
+        <tr>
+          <th>最後に食べた日</td>
+          <td><%= @meal.last_day %><td>
+        </tr>
+        <tr>
+          <th>参考サイト</td>
+          <% if @meal.link != '' %>
+            <td><%= link_to '登録されたリンク', @meal.link %><td>
+          <% else %>
+            <td>リンクは登録されていません</td>
+          <% end %>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="row">
+    <%= link_to '編集ページへ', edit_meal_path(@meal), class: "btn btn-primary" %>
+  </div>
+  <hr>
+  <div class="row">
+    <h3>登録されているタグ</h3>
+  </div>
+  <div class="row">
+    <h3>登録していないタグ</h3>
+  </div>
+</div>
