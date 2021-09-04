@@ -6,22 +6,38 @@
       料理名を入力してください。
     </div>
   </div>
-  <div>値段の選択</div>
-  <% price_index = Price.all %>
-  <% price_index.each do |price| %>
-    <div class="form-check">
-      <%= f.radio_button :price_id, price.id, class: "form-check-input" %>
-      <%= f.label :price_id, price.select ,class: "form-check-label" %>
+  <div class="row p-3">
+    <div class="col-sm-4 border">
+      <div>値段の選択</div>
+      <% price_index = Price.all %>
+      <% price_index.each do |price| %>
+        <div class="form-check">
+          <%= f.radio_button :price_id, price.id, class: "form-check-input" %>
+          <%= f.label :price_id, price.select ,class: "form-check-label" %>
+        </div>
+      <% end %>
     </div>
-  <% end %>
-  <div>カロリーの選択</div>
-  <% calorie_index = Calorie.all %>
-  <% calorie_index.each do |calorie| %>
-    <div class="form-check">
-      <%= f.radio_button :calorie_id, calorie.id, class: "form-check-input" %>
-      <%= f.label :calorie_id, calorie.select ,class: "form-check-label" %>
+    <div class="col-sm-4 border">
+      <div>カロリーの選択</div>
+      <% calorie_index = Calorie.all %>
+      <% calorie_index.each do |calorie| %>
+        <div class="form-check">
+          <%= f.radio_button :calorie_id, calorie.id, class: "form-check-input" %>
+          <%= f.label :calorie_id, calorie.select ,class: "form-check-label" %>
+        </div>
+      <% end %>
     </div>
-  <% end %>
+    <div class="col-sm-4 border">
+      <div>大変さの選択</div>
+      <% labor_index = Labor.all %>
+      <% labor_index.each do |labor| %>
+        <div class="form-check">
+          <%= f.radio_button :labor_id, labor.id, class: "form-check-input" %>
+          <%= f.label :labor_id, labor.select ,class: "form-check-label" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
   <div class="form-group">
     <%= f.label :link, '外部サイトへのリンク' ,class: "form-label" %>
     <%= f.text_area :link, autofocus: true, placeholder: '外部サイトへのリンク 不要であれば空欄のままで可', class: "form-control" %>
