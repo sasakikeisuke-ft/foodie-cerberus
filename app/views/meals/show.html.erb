@@ -36,6 +36,9 @@
   <hr>
   <h3>登録されているタグ</h3>
   <div class="row">
+    <% @meal.tags.each do |tag| %>
+      <%= link_to tag.name, remove_tag_meal_path(tag_id: tag.id), method: :delete %>
+    <% end %>
   </div>
   <h3>登録していないタグ</h3>
   <div class="row">

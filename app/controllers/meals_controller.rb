@@ -51,6 +51,12 @@ class MealsController < ApplicationController
     end
   end
 
+  def remove_tag
+    meal_tag_relation = MealTagRelation.find_by(meal_id: params[:id], tag_id: params[:tag_id])
+    meal_tag_relation.destroy
+    redirect_to meal_path(params[:id])
+  end
+
   private
 
   def meal_params

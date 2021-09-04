@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   resources :meals do
     member do
       post 'add_tag'
+      delete 'remove_tag'
     end
   end
   resources :tags
