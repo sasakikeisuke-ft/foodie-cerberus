@@ -9,6 +9,10 @@ Rails.application.routes.draw do
       post 'create_tag'
     end
   end
-  resources :tags
+  resources :tags do
+    member do
+      post 'join'
+    end
+  end
   resources :logs, only: [:index, :create, :update, :destroy]
 end

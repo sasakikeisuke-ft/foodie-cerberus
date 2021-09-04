@@ -38,9 +38,17 @@ class TagsController < ApplicationController
   end
 
   def show
-    @tag = Tag.includes(:meals).find(params[:id])
-    not_target_meals = MealTagRelation.where(tag_id: params[:id]).select(:meal_id)
-    @meals = Meal.where(user_id: current_user.id).where.not(id: not_target_meals).order(:last_day)
+    common_variable2
+  end
+
+  def join
+    meal_tag_relation = MealTagRelation.new(tag_id: params[:id], meal_id: params[:meal_id])
+    if meal_tag_relation.save
+      redirect_to tag_path(params[:id])
+    else
+      common_variable2
+      render :show
+    end
   end
 
   private
@@ -51,6 +59,12 @@ class TagsController < ApplicationController
 
   def common_variable1
     @tag = Tag.find(params[:id])
+  end
+
+  def common_variable2
+    @tag = Tag.includes(:meals).find(params[:id])
+    not_target_meals = MealTagRelation.where(tag_id: params[:id]).select(:meal_id)
+    @meals = Meal.where(user_id: current_user.id).where.not(id: not_target_meals).order(:last_day)
   end
 
   def tag_form_variable

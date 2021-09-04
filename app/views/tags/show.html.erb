@@ -24,7 +24,7 @@ tags#show
   <div class="row">
     <% @meals.each do |meal| %>
       <div class="col-md-4">
-        <%= meal.name %>
+        <%= link_to meal.name, join_tag_path(meal_id: meal.id), method: :post %>
       </div>
     <% end %>
   </div>
