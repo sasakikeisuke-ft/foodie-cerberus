@@ -16,4 +16,24 @@ mealsコントローラー<br>
   <% @meals.each_with_index do |meal, i| %>
     <%= link_to "showその#{i + 1}", meal_path(meal) %><br>
   <% end %>
+  <% @meals.each_with_index do |meal, i| %>
+    <%= link_to "destroyその#{i + 1}", meal_path(meal), method: :delete %><br>
+  <% end %>
+<% end %>
+<br><br>
+tagsコントローラー<br>
+<%= link_to 'index', tags_path %><br>
+<%= link_to 'new', new_tag_path %><br>
+<% if @tags.empty? %>
+  まだタグは登録されていません。<br>
+<% else %>
+  <% @tags.each_with_index do |tag, i| %>
+    <%= link_to "editその#{i + 1}", edit_tag_path(tag) %><br>
+  <% end %>
+  <% @tags.each_with_index do |tag, i| %>
+    <%= link_to "showその#{i + 1}", tag_path(tag) %><br>
+  <% end %>
+  <% @tags.each_with_index do |tag, i| %>
+    <%= link_to "destroyその#{i + 1}", tag_path(tag), method: :delete %><br>
+  <% end %>
 <% end %>
