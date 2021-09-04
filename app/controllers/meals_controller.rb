@@ -13,7 +13,7 @@ class MealsController < ApplicationController
   def create
     @meal = Meal.new(meal_params)
     if @meal.save
-      redirect_to root_path
+      redirect_to meals_path
     else
       meal_form_variable
       render :new
