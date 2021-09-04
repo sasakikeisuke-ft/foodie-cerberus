@@ -1,6 +1,6 @@
 class TagsController < ApplicationController
   before_action :tag_form_variable, only: [:new, :edit]
-  before_action :common_variable1, only: [:edit, :update, :destroy, :show]
+  before_action :common_variable1, only: [:edit, :update, :destroy]
 
   def index
     @tags = Tag.where(user_id: current_user.id).order(:category_id)
@@ -38,8 +38,9 @@ class TagsController < ApplicationController
   end
 
   def show
-    @meals = Meal.where(user_id: current_user.id)
-    @meal_tag_relations = MealTagRelation.where(tag_id: params[:tag_id])
+    @tag = Tag.includes(:meals).find(params[:id])
+    not_target_meals = MealTagRelation.where(tag_id: params[:id]).select(:meal_id)
+    @meals = Meal.where(user_id: current_user.id).where.not(id: not_target_meals).order(:last_day)
   end
 
   private

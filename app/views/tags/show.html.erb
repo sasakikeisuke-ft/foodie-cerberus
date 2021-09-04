@@ -6,7 +6,24 @@ tags#show
   <div class="row">
     <h3>カテゴリー: <%= @tag.category.name_ja %></h3>
   </div>
+  <hr>
+  <h4>このタグが登録されている料理</h4>
+  <p>料理名をクリックすると、対象からこのタグを外すことができます。</p>
   <div class="row">
-    <h2>このタグが登録されている料理</h2>
+    <% @tag.meals.each do |meal| %>
+      <div class="col-md-4">
+        <%= meal.name %>
+      </div>
+    <% end %>
+  </div>
+  <hr>
+  <h4>このタグが登録されていない料理</h4>
+  <p>料理名をクリックすると、対象にこのタグをつけることができます。</p>
+  <div class="row">
+    <% @meals.each do |meal| %>
+      <div class="col-md-4">
+        <%= meal.name %>
+      </div>
+    <% end %>
   </div>
 </div>
