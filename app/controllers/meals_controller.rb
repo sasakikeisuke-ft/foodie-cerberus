@@ -54,5 +54,4 @@ class MealsController < ApplicationController
 
   def meal_form_variable
   end
-
 end
