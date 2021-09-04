@@ -1,4 +1,5 @@
 <%= form_with model: @meal, local: true do |f| %>
+  <%= render 'shared/error_messages', model: f.object %>
   <div class="form-group">
     <%= f.label :name, '料理名' ,class: "form-label" %>
     <%= f.text_field :name, autofocus: true, placeholder: '料理名', class: "form-control" %>
