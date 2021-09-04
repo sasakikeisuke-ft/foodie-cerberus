@@ -34,10 +34,13 @@
     <%= link_to '編集ページへ', edit_meal_path(@meal), class: "btn btn-primary" %>
   </div>
   <hr>
+  <h3>登録されているタグ</h3>
   <div class="row">
-    <h3>登録されているタグ</h3>
   </div>
+  <h3>登録していないタグ</h3>
   <div class="row">
-    <h3>登録していないタグ</h3>
+    <% @tags.each do |tag| %>
+      <%= link_to tag.name, add_tag_meal_path(tag_id: tag.id), method: :post %>
+    <% end %>
   </div>
 </div>
