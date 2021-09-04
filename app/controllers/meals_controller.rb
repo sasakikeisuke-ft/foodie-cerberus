@@ -57,10 +57,25 @@ class MealsController < ApplicationController
     redirect_to meal_path(params[:id])
   end
 
+  def create_tag
+    @tag = Tag.new(tag_params)
+    if @tag.save
+      MealTagRelation.create(meal_id: params[:id], tag_id: @tag.id)
+      redirect_to meal_path(params[:id])
+    else
+      common_variable2
+      render :show
+    end
+  end
+
   private
 
   def meal_params
     params.require(:meal).permit(:name, :last_day, :link, :price_id, :calorie_id, :labor_id).merge(user_id: current_user.id)
+  end
+
+  def tag_params
+    params.require(:tag).permit(:name, :category_id).merge(user_id: current_user.id)
   end
 
   def common_variable1
@@ -70,7 +85,8 @@ class MealsController < ApplicationController
   def common_variable2
     @meal = Meal.includes(:tags).find(params[:id])
     not_target_tags = MealTagRelation.where(meal_id: params[:id]).select(:tag_id)
-    @tags = Tag.where(user_id: current_user.id).where.not(id: not_target_tags)
+    @tags = Tag.where(user_id: current_user.id).where.not(id: not_target_tags).order(:category_id)
+    @tag = Tag.new
   end
 
   def meal_form_variable

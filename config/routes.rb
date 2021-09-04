@@ -6,6 +6,7 @@ Rails.application.routes.draw do
     member do
       post 'add_tag'
       delete 'remove_tag'
+      post 'create_tag'
     end
   end
   resources :tags
