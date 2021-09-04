@@ -35,6 +35,7 @@ ActiveRecord::Schema.define(version: 2021_09_03_131432) do
     t.date "last_day", null: false
     t.integer "price_id", null: false
     t.integer "calorie_id", null: false
+    t.integer "labor_id", null: false
     t.bigint "user_id"
     t.text "link"
     t.datetime "created_at", precision: 6, null: false

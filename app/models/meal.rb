@@ -3,6 +3,7 @@ class Meal < ApplicationRecord
     with_options numericality: { other_than: 0, message: 'を選択してください' } do
       validates :price_id
       validates :calorie_id
+      validates :labor_id
     end
     validates :name, uniqueness: { case_sensitive: false, scope: :user_id }
     validates :last_day
@@ -16,4 +17,5 @@ class Meal < ApplicationRecord
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to_active_hash :price
   belongs_to_active_hash :calorie
+  belongs_to_active_hash :labor
 end

@@ -5,6 +5,7 @@ class CreateMeals < ActiveRecord::Migration[6.0]
       t.date :last_day, null: false
       t.integer :price_id, null: false
       t.integer :calorie_id, null: false
+      t.integer :labor_id, null: false
       t.references :user, foreign_key: true
       t.text :link
       t.timestamps
