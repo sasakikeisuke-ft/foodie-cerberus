@@ -1,9 +1,7 @@
-<%# 何かしらのメソッド %>
-<div class="container">
-<h1>本日の献立</h1>
 <% if @logs.empty? %>
   本日の献立はまだ登録されていません。
 <% else %>
+  <% contents = make_menu(@logs) %>
   <div class="table-responsive">
     <table class="table table-striped">
       <thead>
@@ -14,21 +12,25 @@
         <th>献立から削除</th>
       </thead>
       <tbody>
-        <% @logs.each do |log| %>
-          <td><%= log.meal.name %></td>
-          <td><%= log.meal.price.select %></td>
-          <td><%= log.meal.labor.select %></td>
-          <td><%= log.meal.calorie.select %></td>
-          <td><%= link_to '削除', log_path(log.meal), method: :delete %></td>
+        <% contents[:meals].each do |meal| %>
+          <td><%= meal.name %></td>
+          <td><%= meal.price.select %></td>
+          <td><%= meal.labor.select %></td>
+          <td><%= meal.calorie.select %></td>
+          <td><%= link_to '献立から削除', log_path(meal), method: :delete %></td>
         <% end %>
       </tbody>
     </table>
   </div>
+  <hr>
+  <h3>本日の献立に関連するタグ一覧</h3>
+  <div class="row">
+    <% contents[:tags].each do |tag| %>
+      <div class="col-md-3">
+        <%= tag.name %>
+      </div>
+    <% end %>
+  </div>
 <% end %>
-<hr>
 
-<h3>本日の献立に関連するタグ一覧</h3>
-<p>タグに関する記述</p>
-<div class="row">
 
-</div>
