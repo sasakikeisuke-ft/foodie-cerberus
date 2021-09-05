@@ -18,8 +18,9 @@ class LogsController < ApplicationController
   end
 
   def destroy
-    @log.destroy
-    redirect_to root_path
+    log = Log.find(params[:id])
+    log.destroy
+    redirect_to logs_path
   end
 
   private

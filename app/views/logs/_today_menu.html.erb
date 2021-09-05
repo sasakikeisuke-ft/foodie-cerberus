@@ -12,12 +12,12 @@
         <th>献立から削除</th>
       </thead>
       <tbody>
-        <% menu[:meals].each do |meal| %>
-          <td><%= meal.name %></td>
-          <td><%= meal.price.select %></td>
-          <td><%= meal.labor.select %></td>
-          <td><%= meal.calorie.select %></td>
-          <td><%= link_to '献立から削除', log_path(meal), method: :delete %></td>
+        <% @logs.each do |log| %>
+          <td><%= log.meal.name %></td>
+          <td><%= log.meal.price.select %></td>
+          <td><%= log.meal.labor.select %></td>
+          <td><%= log.meal.calorie.select %></td>
+          <td><%= link_to '献立から削除', log_path(log), method: :delete %></td>
         <% end %>
       </tbody>
     </table>

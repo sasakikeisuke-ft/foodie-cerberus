@@ -17,8 +17,8 @@ module LogsHelper
     oldest_meals = make_oldest_meals(meals)
     suggestion = {
       category_index: category_index,
-      random: meals[rand(0..meals.length - 1)].name,
-      oldest: oldest_meals[rand(0..oldest_meals.length - 1)].name
+      random: meals[rand(0..meals.length - 1)],
+      oldest: oldest_meals[rand(0..oldest_meals.length - 1)]
     }
 
     end_count = Category.where.not(id: 0).length
