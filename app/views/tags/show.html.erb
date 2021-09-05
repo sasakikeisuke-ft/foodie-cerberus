@@ -7,7 +7,8 @@ tags#show
   <div class="row">
     <h3>カテゴリー: <%= @tag.category.name_ja %></h3>
   </div>
-  <%= link_to '編集へ', edit_tag_path(@tag), class: "btn btn-primary" %>
+  <%= link_to 'タグの編集へ', edit_tag_path(@tag), class: "btn btn-primary" %>
+  <%= link_to 'このタグを削除', tag_path(@tag), method: :delete, class: "btn btn-warning" %>
   <hr>
   <h4>このタグが登録されている料理</h4>
   <p>料理名をクリックすると、対象からこのタグを外すことができます。</p>
