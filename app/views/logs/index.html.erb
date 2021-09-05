@@ -3,17 +3,21 @@
   <%= render partial: "today_menu" %>
   <hr>
 
+  <% suggestion = make_suggestion(@meals) %>
   <h2>献立のご提案</h2>
-  <div class="row">
-    さまざまな献立<br>
-    ランダムに一つ<br>
-    最も古いものを一つ<br>
-    各カテゴリーから古いものを一つ<br>
-  </div>
+    登録されている料理から一品 -> <%= suggestion[:random] %><br>
+    食べたのが最も昔の料理から一品 -> <%= suggestion[:oldest] %><br>
+    <hr>
+    <h3>各カテゴリーから古いものを一つ</h3>
+    <% suggestion[:category_index].each do |category| %>
+      <% next if suggestion[category.name.to_sym].nil? %>
+
+      <%= category.name_ja %>から ->
+      <%= suggestion[category.name.to_sym].name %>
+    <% end %>
   <hr>
 
   <h3>料理を検索する</h3>
-  <div class="row">
     検索内容を表示する項目<br>
     名前で検索<br>
     値段で検索<br>
@@ -22,7 +26,7 @@
     カテゴリーで検索<br>
     日付が古い順で検索<br>
     タグで検索<br>
+  <div class="row">
     
-
   </div>
 </div>
