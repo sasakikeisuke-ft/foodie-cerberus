@@ -40,9 +40,7 @@ class MealsController < ApplicationController
   def show
     common_variable2
     tags = Tag.where(user_id: current_user.id)
-    if tags.length == 0
-      DefaultTagService.set(current_user.id)
-    end
+    DefaultTagService.set(current_user.id) if tags.length == 0
   end
 
   def add_tag

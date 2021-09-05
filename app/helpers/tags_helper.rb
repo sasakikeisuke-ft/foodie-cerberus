@@ -9,11 +9,10 @@ module TagsHelper
   end
 
   def make_tag_contents_base
-    contents = {category_index: Category.where.not(id: 0)}
+    contents = { category_index: Category.where.not(id: 0) }
     contents[:category_index].each do |category|
       contents[category.name.to_sym] = []
     end
     contents
   end
-
 end

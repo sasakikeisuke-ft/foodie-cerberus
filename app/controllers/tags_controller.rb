@@ -75,5 +75,4 @@ class TagsController < ApplicationController
 
   def tag_form_variable
   end
-
 end
