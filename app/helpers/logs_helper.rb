@@ -1,13 +1,14 @@
 module LogsHelper
+  # 本日の献立を表示するための配列をハッシュで作成するメソッド
   def make_menu(logs)
-    contents = {meals: [], tags: []}
+    menu = {meals: [], tags: []}
     logs.each do |log|
-      contents[:meals] << log.meal
+      menu[:meals] << log.meal
       log.meal.tags.each do |tag|
-        contents[:tags] << tag
+        menu[:tags] << tag
       end
     end
-    contents
+    menu
   end
 
 

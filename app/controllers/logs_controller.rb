@@ -1,7 +1,6 @@
 class LogsController < ApplicationController
 
   def index
-    @logs = Log.where(user_id: current_user.id)
     @logs = Log.includes(meal: :tags).where(user_id: current_user.id)
   end
 

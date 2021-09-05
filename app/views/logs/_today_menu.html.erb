@@ -1,7 +1,7 @@
 <% if @logs.empty? %>
   本日の献立はまだ登録されていません。
 <% else %>
-  <% contents = make_menu(@logs) %>
+  <% menu = make_menu(@logs) %>
   <div class="table-responsive">
     <table class="table table-striped">
       <thead>
@@ -12,7 +12,7 @@
         <th>献立から削除</th>
       </thead>
       <tbody>
-        <% contents[:meals].each do |meal| %>
+        <% menu[:meals].each do |meal| %>
           <td><%= meal.name %></td>
           <td><%= meal.price.select %></td>
           <td><%= meal.labor.select %></td>
@@ -25,7 +25,7 @@
   <hr>
   <h3>本日の献立に関連するタグ一覧</h3>
   <div class="row">
-    <% contents[:tags].each do |tag| %>
+    <% menu[:tags].each do |tag| %>
       <div class="col-md-3">
         <%= tag.name %>
       </div>
