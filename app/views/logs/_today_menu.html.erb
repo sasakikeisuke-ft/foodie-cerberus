@@ -1,0 +1,34 @@
+<%# 何かしらのメソッド %>
+<div class="container">
+<h1>本日の献立</h1>
+<% if @logs.empty? %>
+  本日の献立はまだ登録されていません。
+<% else %>
+  <div class="table-responsive">
+    <table class="table table-striped">
+      <thead>
+        <th>料理名</th>
+        <th>値段</th>
+        <th>大変さ</th>
+        <th>カロリー</th>
+        <th>献立から削除</th>
+      </thead>
+      <tbody>
+        <% @logs.each do |log| %>
+          <td><%= log.meal.name %></td>
+          <td><%= log.meal.price.select %></td>
+          <td><%= log.meal.labor.select %></td>
+          <td><%= log.meal.calorie.select %></td>
+          <td><%= link_to '削除', log_path(log.meal), method: :delete %></td>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+<% end %>
+<hr>
+
+<h3>本日の献立に関連するタグ一覧</h3>
+<p>タグに関する記述</p>
+<div class="row">
+
+</div>
