@@ -1,12 +1,31 @@
-tags#show
 <div class="container">
+  <h1>タグ詳細ページ</h1>
   <div class="row">
     <h2><%= @tag.name %></h2><br>
   </div>
   <div class="row">
     <h3>カテゴリー: <%= @tag.category.name_ja %></h3>
   </div>
+  <%= link_to 'タグの編集へ', edit_tag_path(@tag), class: "btn btn-primary" %>
+  <%= link_to 'このタグを削除', tag_path(@tag), method: :delete, class: "btn btn-warning" %>
+  <hr>
+  <h4>このタグが登録されている料理</h4>
+  <p>料理名をクリックすると、対象からこのタグを外すことができます。</p>
   <div class="row">
-    <h2>このタグが登録されている料理</h2>
+    <% @tag.meals.each do |meal| %>
+      <div class="col-md-4">
+        <%= link_to meal.name, withdraw_tag_path(meal_id: meal.id), method: :delete %>
+      </div>
+    <% end %>
+  </div>
+  <hr>
+  <h4>このタグが登録されていない料理</h4>
+  <p>料理名をクリックすると、対象にこのタグをつけることができます。</p>
+  <div class="row">
+    <% @meals.each do |meal| %>
+      <div class="col-md-4">
+        <%= link_to meal.name, join_tag_path(meal_id: meal.id), method: :post %>
+      </div>
+    <% end %>
   </div>
 </div>

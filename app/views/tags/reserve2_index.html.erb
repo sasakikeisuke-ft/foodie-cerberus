@@ -1,0 +1,19 @@
+<div class="container-md">
+  <h2>登録タグの一覧</h2>
+  <% if @tags.empty? %>
+    タグはまだ登録されていません
+  <% else %>
+    <% contents = distribution_tags(@tags) %>
+    <% contents[:category_index].each do |category| %>
+      <h3><%= category.name_ja %></h3>
+      <div class="row ">
+        <% contents[category.name.to_sym].each do |tag| %>
+          <div class="col-md-3">
+            <%= link_to tag.name, tag_path(tag) %>
+          </div>
+        <% end %>
+      </div>
+      <hr>
+    <% end %>
+  <% end %>
+</div>

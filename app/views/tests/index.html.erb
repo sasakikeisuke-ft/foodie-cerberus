@@ -10,14 +10,14 @@ mealsコントローラー<br>
 <% if @meals.empty? %>
   まだ食事は登録されていません。<br>
 <% else %>
-  <% @meals.each_with_index do |meal, i| %>
-    <%= link_to "editその#{i + 1}", edit_meal_path(meal) %><br>
+  <% @meals.each do |meal| %>
+    <%= link_to "edit -> #{meal.name}", edit_meal_path(meal) %><br>
   <% end %>
-  <% @meals.each_with_index do |meal, i| %>
-    <%= link_to "showその#{i + 1}", meal_path(meal) %><br>
+  <% @meals.each do |meal| %>
+    <%= link_to "show -> #{meal.name}", meal_path(meal) %><br>
   <% end %>
-  <% @meals.each_with_index do |meal, i| %>
-    <%= link_to "destroyその#{i + 1}", meal_path(meal), method: :delete %><br>
+  <% @meals.each do |meal| %>
+    <%= link_to "destroy -> #{meal.name}", meal_path(meal), method: :delete %><br>
   <% end %>
 <% end %>
 <br><br>
@@ -27,13 +27,13 @@ tagsコントローラー<br>
 <% if @tags.empty? %>
   まだタグは登録されていません。<br>
 <% else %>
-  <% @tags.each_with_index do |tag, i| %>
-    <%= link_to "editその#{i + 1}", edit_tag_path(tag) %><br>
+  <% @tags.each do |tag| %>
+    <%= link_to "edit -> #{tag.name}", edit_tag_path(tag) %><br>
   <% end %>
-  <% @tags.each_with_index do |tag, i| %>
-    <%= link_to "showその#{i + 1}", tag_path(tag) %><br>
+  <% @tags.each do |tag| %>
+    <%= link_to "show -> #{tag.name}", tag_path(tag) %><br>
   <% end %>
-  <% @tags.each_with_index do |tag, i| %>
-    <%= link_to "destroyその#{i + 1}", tag_path(tag), method: :delete %><br>
+  <% @tags.each do |tag| %>
+    <%= link_to "destroy -> #{tag.name}", tag_path(tag), method: :delete %><br>
   <% end %>
 <% end %>
