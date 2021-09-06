@@ -18,16 +18,30 @@
       <% end %>
       <nav class="my-2 my-md-0 mr-md-3">
       </nav>
-      <% if user_signed_in? %>
-        <%= link_to 'ユーザー編集', edit_user_registration_path, class: "p-2 text-dark" %>
-        <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "btn btn-outline-primary" %>
-      <% else %>
-        <%= link_to '新規登録', new_user_registration_path, class: "btn btn-outline-primary" %>
-        <%= link_to 'ログイン', new_user_session_path, class: "btn btn-outline-primary" %>
-      <% end %>
+      <div class="dropdown">
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+          プルダウン
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <li><%= link_to '本日の献立・検索', logs_path, class: "dropdown-item" %></li>
+          <li><%= link_to '登録した料理一覧', meals_path, class: "dropdown-item" %></li>
+          <li><%= link_to '料理の新規登録', new_meal_path, class: "dropdown-item" %></li>
+          <li><%= link_to '登録したタグ一覧', tags_path, class: "dropdown-item" %></li>
+          <li><%= link_to 'タグの新規登録', new_tag_path, class: "dropdown-item" %></li>
+          <hr>
+          <% if user_signed_in? %>
+            <li><%= link_to 'ユーザー編集', edit_user_registration_path, class: "dropdown-item" %></li>
+            <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "dropdown-item" %></li>
+          <% else %>
+            <li><%= link_to '新規登録', new_user_registration_path, class: "dropdown-item" %></li>
+            <li><%= link_to 'ログイン', new_user_session_path, class: "dropdown-item" %></li>
+          <% end %>
+        </ul>
+      </div>
     </div>
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
     <%= yield %>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
   </body>
 </html>
