@@ -5,15 +5,17 @@
 
   <% suggestion = make_suggestion(@meals) %>
   <h2>献立のご提案</h2>
-    登録されている料理から一品 -> <%= link_to suggestion[:random].name, logs_path(id: suggestion[:random].id), method: :post %><br>
-    食べたのが最も昔の料理から一品 -> <%= link_to suggestion[:oldest].name, logs_path(id: suggestion[:oldest].id), method: :post %><br>
+    登録されている料理から一品 ->
+    <%= link_to suggestion[:random].name, logs_path(id: suggestion[:random].id), method: :post %><br>
+    食べたのが最も昔の料理から一品 ->
+    <%= link_to suggestion[:oldest].name, logs_path(id: suggestion[:oldest].id), method: :post %><br>
     <hr>
     <h3>各カテゴリーから古いものを一つ</h3>
     <% suggestion[:category_index].each do |category| %>
       <% next if suggestion[category.name.to_sym].nil? %>
 
       <%= category.name_ja %>から ->
-      <%= suggestion[category.name.to_sym].name %>
+      <%= link_to suggestion[category.name.to_sym].name, logs_path(id: suggestion[category.name.to_sym]), method: :post %>
     <% end %>
   <hr>
 
