@@ -1,0 +1,48 @@
+<% if @logs.empty? %>
+  本日の献立はまだ登録されていません。
+<% else %>
+  <% menu = make_menu(@logs) %>
+  <div class="table-responsive">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>料理名</th>
+          <th>値段</th>
+          <th>大変さ</th>
+          <th>カロリー</th>
+          <th>献立から削除</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @logs.each do |log| %>
+          <tr>
+            <td><%= log.meal.name %></td>
+            <td><%= log.meal.price.select %></td>
+            <td><%= log.meal.labor.select %></td>
+            <td><%= log.meal.calorie.select %></td>
+            <td><%= link_to '献立から削除', log_path(log), method: :delete %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+  <div class="row text-center">
+    <div class="col-md-6">
+      <%= link_to '食事の報告(最後に食べた日の更新)', last_day_update_logs_path, method: :patch, class: "btn btn-lg btn-primary" %>
+    </div>
+    <div class="col-md-6">
+      <%= link_to '本日の献立を一括削除', all_delete_logs_path, method: :delete, class: "btn btn-lg btn-danger" %>
+    </div>
+  </div>
+  <hr>
+  <h3>本日の献立に関連するタグ一覧</h3>
+  <div class="row">
+    <% menu[:tags].each do |tag| %>
+      <div class="col-md-3">
+        <%= tag.name %>
+      </div>
+    <% end %>
+  </div>
+<% end %>
+
+

@@ -15,6 +15,10 @@ Rails.application.routes.draw do
       delete 'withdraw'
     end
   end
-
-  resources :logs, only: [:index, :create, :update, :destroy]
+  resources :logs, only: [:index, :create, :destroy] do
+    collection do
+      patch 'last_day_update'
+      delete 'all_delete'
+    end
+  end
 end

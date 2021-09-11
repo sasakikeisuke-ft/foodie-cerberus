@@ -1,0 +1,36 @@
+<div class="container">
+  <h1>本日の献立</h1>
+  <%= render partial: "today_menu" %>
+  <hr>
+
+  <% unless @meals.empty? %>
+    <% suggestion = make_suggestion(@meals) %>
+    <h2>献立のご提案</h2>
+      登録されている料理から一品 ->
+      <%= link_to suggestion[:random].name, logs_path(id: suggestion[:random].id), method: :post %><br>
+      食べたのが最も昔の料理から一品 ->
+      <%= link_to suggestion[:oldest].name, logs_path(id: suggestion[:oldest].id), method: :post %><br>
+      <hr>
+      <h3>各カテゴリーから古いものを一つ</h3>
+      <% suggestion[:category_index].each do |category| %>
+        <% next if suggestion[category.name.to_sym].nil? %>
+
+        <%= category.name_ja %>から ->
+        <%= link_to suggestion[category.name.to_sym].name, logs_path(id: suggestion[category.name.to_sym]), method: :post %>
+      <% end %>
+    <hr>
+  <% end %>
+
+  <h3>料理を検索する</h3>
+    検索内容を表示する項目<br>
+    名前で検索<br>
+    値段で検索<br>
+    大変さで検索<br>
+    カロリーで検索<br>
+    カテゴリーで検索<br>
+    日付が古い順で検索<br>
+    タグで検索<br>
+  <div class="row">
+    
+  </div>
+</div>
