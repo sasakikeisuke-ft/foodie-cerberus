@@ -5,7 +5,7 @@ class LogsController < ApplicationController
   end
 
   def create
-    log = Log.new(meal_id: params[:id], user_id: current_user.id )
+    log = Log.new(meal_id: params[:id], user_id: current_user.id)
     if log.save
       redirect_to logs_path
     else
@@ -40,7 +40,6 @@ class LogsController < ApplicationController
     @logs = Log.includes(meal: :tags).where(user_id: current_user.id)
     @meals = Meal.includes(:tags).where(user_id: current_user.id).where.not(id: @logs.select(:meal_id)).order(:last_day)
   end
-
 end
 
 # bundle exec rubocop -a
