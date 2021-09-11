@@ -41,5 +41,3 @@ class LogsController < ApplicationController
     @meals = Meal.includes(:tags).where(user_id: current_user.id).where.not(id: @logs.select(:meal_id)).order(:last_day)
   end
 end
-
-# bundle exec rubocop -a
