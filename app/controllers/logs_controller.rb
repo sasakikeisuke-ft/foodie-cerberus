@@ -23,6 +23,12 @@ class LogsController < ApplicationController
     redirect_to logs_path
   end
 
+  def all_delete
+    log = Log.where(user_id: current_user.id)
+    log.destroy_all
+    redirect_to logs_path
+  end
+
   private
 
   def common_variable1
