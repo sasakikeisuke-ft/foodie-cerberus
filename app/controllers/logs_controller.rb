@@ -14,12 +14,17 @@ class LogsController < ApplicationController
     end
   end
 
-  def update
-  end
-
   def destroy
     log = Log.find(params[:id])
     log.destroy
+    redirect_to logs_path
+  end
+
+  def last_day_update
+    logs = Log.where(user_id: current_user.id)
+    meals = Meal.where(id: logs.select(:meal_id))
+    meals.update_all(last_day: Date.today)
+    logs.destroy_all
     redirect_to logs_path
   end
 
