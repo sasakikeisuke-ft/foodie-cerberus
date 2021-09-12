@@ -19,6 +19,7 @@ Rails.application.routes.draw do
     collection do
       patch 'last_day_update'
       delete 'all_delete'
+      get 'search_meals'
     end
   end
 end
