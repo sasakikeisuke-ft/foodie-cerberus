@@ -1,0 +1,31 @@
+<div class="container-md">
+  <%= @comment %>
+  <% if @meals.empty? %>
+    料理はまだ登録されていません
+  <% else %>
+    <div class="table-responsive">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>料理名</th>
+            <th>値段</th>
+            <th>大変さ</th>
+            <th>カロリー</th>
+            <th>最後に食べた日</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @meals.each do |meal| %>
+            <tr>
+              <th><%= link_to meal.name, meal_path(meal) %></th>
+              <td><%= meal.price.select %></td>
+              <td><%= meal.labor.select %></td>
+              <td><%= meal.calorie.select %></td>
+              <td><%= meal.last_day %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  <% end %>
+</div>
