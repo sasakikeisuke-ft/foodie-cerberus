@@ -28,7 +28,9 @@
     大変さで検索<br>
     カロリーで検索<br>
     カテゴリーで検索<br>
-    日付が古い順で検索<br>
+    日付で検索<br>
+    <%= link_to '昔に食べた順番で検索', search_meals_logs_path(search: 'last_day_asc') %>
+    <%= link_to '最近食べた順番で検索', search_meals_logs_path(search: 'last_day_desc') %><br>
     タグで検索<br>
   <div class="row">
     
