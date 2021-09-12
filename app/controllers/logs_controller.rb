@@ -34,6 +34,12 @@ class LogsController < ApplicationController
     redirect_to logs_path
   end
 
+  def search_meals
+    content = SearchMealsService.search(params[:search], current_user.id)
+    @meals = content[:meals]
+    @comment = content[:comment]
+  end
+
   private
 
   def common_variable1
