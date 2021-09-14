@@ -25,12 +25,17 @@
     検索内容を表示する項目<br>
     名前で検索<br>
     値段で検索<br>
+    <%= link_to '安い', search_meals_logs_path(search: 'price_cheap') %>
+    <%= link_to '普通', search_meals_logs_path(search: 'price_normal') %>
+    <%= link_to '高い', search_meals_logs_path(search: 'price_expensive') %>
+    <br>
     大変さで検索<br>
     カロリーで検索<br>
     カテゴリーで検索<br>
     日付で検索<br>
     <%= link_to '昔に食べた順番で検索', search_meals_logs_path(search: 'last_day_asc') %>
-    <%= link_to '最近食べた順番で検索', search_meals_logs_path(search: 'last_day_desc') %><br>
+    <%= link_to '最近食べた順番で検索', search_meals_logs_path(search: 'last_day_desc') %>
+    <br>
     タグで検索<br>
   <div class="row">
     
