@@ -34,8 +34,33 @@ class SearchMealsService
     when 'calorie_high'
       meals = Meal.where(user_id: user_id, calorie_id: 3).order(:last_day)
       comment = '検索: カロリーが高い'
-    else # 名前で検索
-      puts '名前で検索まだ未実装'
+    when 'meat'
+      meals = Meal.where(user_id: user_id, category_id: 1).order(:last_day)
+      comment = '検索: お肉'
+    when 'fish'
+      meals = Meal.where(user_id: user_id, category_id: 1).order(:last_day)
+      comment = '検索: お魚'
+    when 'vegetable'
+      meals = Meal.where(user_id: user_id, category_id: 1).order(:last_day)
+      comment = '検索: 野菜'
+    when 'rice'
+      meals = Meal.where(user_id: user_id, category_id: 1).order(:last_day)
+      comment = '検索: 米・穀物'
+    when 'noodles'
+      meals = Meal.where(user_id: user_id, category_id: 1).order(:last_day)
+      comment = '検索: 麺類'
+    when 'eating_out'
+      meals = Meal.where(user_id: user_id, category_id: 1).order(:last_day)
+      comment = '検索: 外食'
+    when 'microwave'
+      meals = Meal.where(user_id: user_id, category_id: 1).order(:last_day)
+      comment = '検索: 電子レンジ'
+    when 'retort_food'
+      meals = Meal.where(user_id: user_id, category_id: 1).order(:last_day)
+      comment = '検索: レトルト'
+    when 'free'
+      meals = Meal.where(user_id: user_id, category_id: 1).order(:last_day)
+      comment = '検索: Free'
     end
     content = {
       meals: meals,

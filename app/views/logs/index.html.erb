@@ -40,6 +40,9 @@
     <%= link_to '高い', search_meals_logs_path(search: 'calorie_high') %>
     <br>
     カテゴリーで検索<br>
+    <% Category.all.each do |category| %>
+      <%= link_to "#{category.name_ja}", search_meals_logs_path(search: "#{category.name}") if category.id != 0 %>
+    <% end %><br>
     日付で検索<br>
     <%= link_to '昔に食べた順番で検索', search_meals_logs_path(search: 'last_day_asc') %>
     <%= link_to '最近食べた順番で検索', search_meals_logs_path(search: 'last_day_desc') %>
