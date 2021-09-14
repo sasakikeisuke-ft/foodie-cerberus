@@ -25,6 +25,15 @@ class SearchMealsService
     when 'labor_lot'
       meals = Meal.where(user_id: user_id, labor_id: 3).order(:last_day)
       comment = '検索: 価格がかかる'
+    when 'calorie_row'
+      meals = Meal.where(user_id: user_id, calorie_id: 1).order(:last_day)
+      comment = '検索: カロリーが低い'
+    when 'calorie_normal'
+      meals = Meal.where(user_id: user_id, calorie_id: 2).order(:last_day)
+      comment = '検索: カロリーは普通'
+    when 'calorie_high'
+      meals = Meal.where(user_id: user_id, calorie_id: 3).order(:last_day)
+      comment = '検索: カロリーが高い'
     else # 名前で検索
       puts '名前で検索まだ未実装'
     end

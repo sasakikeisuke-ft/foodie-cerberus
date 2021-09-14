@@ -35,6 +35,10 @@
     <%= link_to '大変', search_meals_logs_path(search: 'labor_lot') %>
     <br>
     カロリーで検索<br>
+    <%= link_to '低い', search_meals_logs_path(search: 'calorie_row') %>
+    <%= link_to '普通', search_meals_logs_path(search: 'calorie_normal') %>
+    <%= link_to '高い', search_meals_logs_path(search: 'calorie_high') %>
+    <br>
     カテゴリーで検索<br>
     日付で検索<br>
     <%= link_to '昔に食べた順番で検索', search_meals_logs_path(search: 'last_day_asc') %>
