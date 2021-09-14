@@ -48,6 +48,9 @@
     <%= link_to '最近食べた順番で検索', search_meals_logs_path(search: 'last_day_desc') %>
     <br>
     タグで検索<br>
+    <% @tags.each do |tag| %>
+      <%= link_to "#{tag.name}", search_meals_logs_path(search: {tag: tag}) %>
+    <% end %>
   <div class="row">
     
   </div>

@@ -61,6 +61,13 @@ class SearchMealsService
     when 'free'
       meals = Meal.where(user_id: user_id, category_id: 1).order(:last_day)
       comment = '検索: Free'
+    else
+      if search[:tag].nil? # 名前で検索
+        puts '名前で検索まだ未実装'
+      else
+        tag = Tag.find(search[:tag])
+        meals = tag.meals
+      end
     end
     content = {
       meals: meals,

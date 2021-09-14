@@ -46,5 +46,6 @@ class LogsController < ApplicationController
   def common_variable1
     @logs = Log.includes(meal: :tags).where(user_id: current_user.id)
     @meals = Meal.includes(:tags).where(user_id: current_user.id).where.not(id: @logs.select(:meal_id)).order(:last_day)
+    @tags = Tag.where(user_id: current_user.id)
   end
 end
