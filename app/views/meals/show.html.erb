@@ -32,6 +32,9 @@
   </div>
   <div class="row">
     <div class="col-md-6">
+      <%= link_to '本日の献立に追加', logs_path(id: @meal), method: :post, class: "btn btn-success" %>
+    </div>
+    <div class="col-md-6">
       <%= link_to '編集ページへ', edit_meal_path(@meal), class: "btn btn-primary" %>
     </div>
   </div>
