@@ -16,7 +16,7 @@
         <% next if suggestion[category.name.to_sym].nil? %>
 
         <%= category.name_ja %>から ->
-        <%= link_to suggestion[category.name.to_sym].name, logs_path(id: suggestion[category.name.to_sym]), method: :post %>
+        <%= link_to suggestion[category.name.to_sym].name, logs_path(id: suggestion[category.name.to_sym]), method: :post %><br>
       <% end %>
     <hr>
   <% end %>
