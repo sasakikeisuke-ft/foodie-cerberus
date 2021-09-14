@@ -36,6 +36,7 @@ class LogsController < ApplicationController
 
   def search_meals
     content = SearchMealsService.search(params[:search], current_user.id)
+    @logs = Log.includes(meal: :tags).where(user_id: current_user.id)
     @meals = content[:meals]
     @comment = content[:comment]
   end
