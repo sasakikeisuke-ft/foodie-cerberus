@@ -1,6 +1,7 @@
 class Meal < ApplicationRecord
   with_options presence: true do
     with_options numericality: { other_than: 0, message: 'を選択してください' } do
+      validates :category_id
       validates :price_id
       validates :calorie_id
       validates :labor_id
@@ -15,6 +16,7 @@ class Meal < ApplicationRecord
 
   # ActiveHash
   extend ActiveHash::Associations::ActiveRecordExtensions
+  belongs_to_active_hash :category
   belongs_to_active_hash :price
   belongs_to_active_hash :calorie
   belongs_to_active_hash :labor

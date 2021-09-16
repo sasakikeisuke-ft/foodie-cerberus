@@ -12,5 +12,6 @@ class Category < ActiveHash::Base
     { id: 9, name: 'free', name_ja: 'フリー' }
   ]
   include ActiveHash::Associations
+  has_many :meals
   has_many :tags
 end
