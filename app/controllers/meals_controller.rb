@@ -25,7 +25,7 @@ class MealsController < ApplicationController
 
   def update
     if @meal.update(meal_params)
-      redirect_to meals_path
+      redirect_to meal_path(@meal)
     else
       meal_form_variable
       render :edit
