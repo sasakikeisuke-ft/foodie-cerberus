@@ -39,7 +39,7 @@ class MealsController < ApplicationController
 
   def show
     common_variable2
-    tags = Tag.where(user_id: current_user.id)
+    tags = Tag.where(user_id: current_user.id).order(:category_id)
     DefaultTagService.set(current_user.id) if tags.empty?
   end
 
