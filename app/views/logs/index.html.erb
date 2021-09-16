@@ -29,31 +29,39 @@
       <%= form.submit "検索", class: "btn btn-success" %>
     <% end %>
     値段で検索<br>
-    <%= link_to '安い', search_meals_logs_path(search: 'price_cheap') %>
-    <%= link_to '普通', search_meals_logs_path(search: 'price_normal') %>
-    <%= link_to '高い', search_meals_logs_path(search: 'price_expensive') %>
+    <% Price.all.each do |price| %>
+      <% next if price.id.zero? %>
+
+      <%= link_to price.select, search_meals_logs_path(search: {type: 'price', id: price.id}) %>
+    <% end %>
     <br>
     大変さで検索<br>
-    <%= link_to '簡単', search_meals_logs_path(search: 'labor_little') %>
-    <%= link_to '普通', search_meals_logs_path(search: 'labor_normal') %>
-    <%= link_to '大変', search_meals_logs_path(search: 'labor_lot') %>
+    <% Labor.all.each do |labor| %>
+      <% next if labor.id.zero? %>
+
+      <%= link_to labor.select, search_meals_logs_path(search: {type: 'labor', id: labor.id}) %>
+    <% end %>
     <br>
     カロリーで検索<br>
-    <%= link_to '低い', search_meals_logs_path(search: 'calorie_row') %>
-    <%= link_to '普通', search_meals_logs_path(search: 'calorie_normal') %>
-    <%= link_to '高い', search_meals_logs_path(search: 'calorie_high') %>
+    <% Calorie.all.each do |calorie| %>
+      <% next if calorie.id.zero? %>
+
+      <%= link_to calorie.select, search_meals_logs_path(search: {type: 'calorie', id: calorie.id}) %>
+    <% end %>
     <br>
     カテゴリーで検索<br>
     <% Category.all.each do |category| %>
-      <%= link_to "#{category.name_ja}", search_meals_logs_path(search: "#{category.name}") if category.id != 0 %>
+      <% next if category.id.zero? %>
+
+      <%= link_to "#{category.name_ja}", search_meals_logs_path(search: {type: 'category', id: category.id}) %>
     <% end %><br>
     日付で検索<br>
-    <%= link_to '昔に食べた順番で検索', search_meals_logs_path(search: 'last_day_asc') %>
-    <%= link_to '最近食べた順番で検索', search_meals_logs_path(search: 'last_day_desc') %>
+    <%= link_to '昔に食べた順番で検索', search_meals_logs_path(search: {type: 'last_day', id: 'ASC'}) %>
+    <%= link_to '最近食べた順番で検索', search_meals_logs_path(search: {type: 'last_day', id: 'DESC'}) %>
     <br>
     タグで検索<br>
     <% @tags.each do |tag| %>
-      <%= link_to "#{tag.name}", search_meals_logs_path(search: tag.id) %>
+      <%= link_to "#{tag.name}", search_meals_logs_path(search: {type: 'tag', id: tag.id}) %>
     <% end %>
   <div class="row">
     
