@@ -22,10 +22,9 @@
   <% end %>
 
   <h3>料理を検索する</h3>
-    検索内容を表示する項目<br>
     名前で検索<br>
     <%= form_with(url: search_meals_logs_path, local: true, method: :get) do |form| %>
-      <%= form.text_field :name, placeholder: "料理名で検索する", class: "form-control" %>
+      <%= form.text_field :name, placeholder: "料理名を入力", class: "form-control" %>
       <%= form.submit "検索", class: "btn btn-success" %>
     <% end %>
     値段で検索<br>
