@@ -49,6 +49,11 @@ RSpec.describe Meal, type: :model do
         @meal.valid?
         expect(@meal.errors.full_messages).to include('Laborを入力してください')
       end
+      it 'category_idが空欄だと登録できない' do
+        @meal.category_id = ''
+        @meal.valid?
+        expect(@meal.errors.full_messages).to include('Categoryを入力してください')
+      end
       it 'userが紐づけられていないと登録できない' do
         @meal.user = nil
         @meal.valid?
@@ -68,6 +73,11 @@ RSpec.describe Meal, type: :model do
         @meal.labor_id = 0
         @meal.valid?
         expect(@meal.errors.full_messages).to include('Laborを選択してください')
+      end
+      it 'category_idが未選択だと登録できない' do
+        @meal.category_id = 0
+        @meal.valid?
+        expect(@meal.errors.full_messages).to include('Categoryを選択してください')
       end
     end
   end

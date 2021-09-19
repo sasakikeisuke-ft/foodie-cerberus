@@ -10,7 +10,7 @@ class DefaultTagService
       { name: 'そば', category_id: 5 },
       { name: 'レストラン', category_id: 6 },
       { name: '冷凍食品', category_id: 7 },
-      { name: 'レトルトカレー', category_id: 8 },
+      { name: 'レトルト', category_id: 8 },
       { name: '中華料理', category_id: 9 }
     ]
     default_tags.each do |tag|

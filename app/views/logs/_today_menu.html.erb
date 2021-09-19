@@ -16,7 +16,7 @@
       <tbody>
         <% @logs.each do |log| %>
           <tr>
-            <td><%= log.meal.name %></td>
+            <td><%= link_to log.meal.name, meal_path(id: log.meal_id) %></td>
             <td><%= log.meal.price.select %></td>
             <td><%= log.meal.labor.select %></td>
             <td><%= log.meal.calorie.select %></td>

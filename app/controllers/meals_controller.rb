@@ -25,7 +25,7 @@ class MealsController < ApplicationController
 
   def update
     if @meal.update(meal_params)
-      redirect_to meals_path
+      redirect_to meal_path(@meal)
     else
       meal_form_variable
       render :edit
@@ -39,7 +39,7 @@ class MealsController < ApplicationController
 
   def show
     common_variable2
-    tags = Tag.where(user_id: current_user.id)
+    tags = Tag.where(user_id: current_user.id).order(:category_id)
     DefaultTagService.set(current_user.id) if tags.empty?
   end
 
@@ -73,7 +73,7 @@ class MealsController < ApplicationController
   private
 
   def meal_params
-    params.require(:meal).permit(:name, :last_day, :link, :price_id, :calorie_id, :labor_id).merge(user_id: current_user.id)
+    params.require(:meal).permit(:name, :last_day, :category_id, :link, :price_id, :calorie_id, :labor_id).merge(user_id: current_user.id)
   end
 
   def tag_params

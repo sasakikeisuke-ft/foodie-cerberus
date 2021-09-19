@@ -39,11 +39,23 @@
       <% end %>
     </div>
   </div>
+  <div class="row">
+    <div class="form-group col-md-6">
+      <%= f.label :category_id, 'カテゴリー選択' ,class: "control-label" %>
+      <%= f.collection_select :category_id, Category.all, :id, :name_ja, {prompt: false}, class: "form-control" %>
+    </div>
+    <div class="invalid-feedback">
+      カテゴリーを選択してください。
+    </div>
+    <div class="form-group col-md-6">
+      <%= f.label :last_day, '最後に食べた日', class: "control-label" %>
+      <%= f.date_field :last_day, value: Date.today, class: "form-control" %>
+    </div>
+  </div>
   <div class="form-group">
     <%= f.label :link, '外部サイトへのリンク' ,class: "form-label" %>
     <%= f.text_area :link, autofocus: true, placeholder: '外部サイトへのリンク 不要であれば空欄のままで可', class: "form-control" %>
   </div>
-  <%= f.hidden_field :last_day, value: Date.today %>
   <div class="form-group">
     <hr class="my-4">
     <%= f.submit "登録する", class: "w-100 btn btn-primary btn-md" %>

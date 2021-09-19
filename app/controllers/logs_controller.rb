@@ -34,10 +34,18 @@ class LogsController < ApplicationController
     redirect_to logs_path
   end
 
+  def search_meals
+    content = SearchMealsService.search(params[:name], params[:search], current_user.id)
+    @logs = Log.includes(meal: :tags).where(user_id: current_user.id)
+    @meals = content[:meals]
+    @comment = content[:comment]
+  end
+
   private
 
   def common_variable1
     @logs = Log.includes(meal: :tags).where(user_id: current_user.id)
     @meals = Meal.includes(:tags).where(user_id: current_user.id).where.not(id: @logs.select(:meal_id)).order(:last_day)
+    @tags = Tag.where(user_id: current_user.id).order(:category_id)
   end
 end

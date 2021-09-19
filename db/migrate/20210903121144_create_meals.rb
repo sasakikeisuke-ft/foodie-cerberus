@@ -3,6 +3,7 @@ class CreateMeals < ActiveRecord::Migration[6.0]
     create_table :meals do |t|
       t.string :name, null: false
       t.date :last_day, null: false
+      t.integer :category_id, null: false
       t.integer :price_id, null: false
       t.integer :calorie_id, null: false
       t.integer :labor_id, null: false
