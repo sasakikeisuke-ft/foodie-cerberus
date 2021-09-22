@@ -5,18 +5,34 @@
   <% unless @meals.length == 0 %>
     <% suggestion = make_suggestion(@meals) %>
     <h2>献立のご提案</h2>
-      登録されている料理から一品 ->
-      <%= link_to suggestion[:random].name, logs_path(id: suggestion[:random].id), method: :post %><br>
-      食べたのが最も昔の料理から一品 ->
-      <%= link_to suggestion[:oldest].name, logs_path(id: suggestion[:oldest].id), method: :post %><br>
-      <hr>
-      <h3>各カテゴリーから古いものを一つ</h3>
-      <% suggestion[:category_index].each do |category| %>
-        <% next if suggestion[category.name.to_sym].nil? %>
+    <div class="table-responsive">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>提案内容</th>
+            <th>料理(選択すると本日の献立に追加)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th>登録されている料理から一品</th>
+            <td><%= link_to suggestion[:random].name, logs_path(id: suggestion[:random].id), method: :post %></td>
+          </tr>
+          <tr>
+            <th>食べたのが最も昔の料理から一品</th>
+            <td><%= link_to suggestion[:oldest].name, logs_path(id: suggestion[:oldest].id), method: :post %></td>
+          </tr>
+          <% suggestion[:category_index].each do |category| %>
+            <% next if suggestion[category.name.to_sym].nil? %>
 
-        <%= image_tag "#{category.name}_icon", size: 32 %> <%= category.name_ja %>から ->
-        <%= link_to suggestion[category.name.to_sym].name, logs_path(id: suggestion[category.name.to_sym]), method: :post %><br>
-      <% end %>
+            <tr>
+              <th>カテゴリー: <%= image_tag "#{category.name}_icon", size: 32 %> <%= category.name_ja %></th>
+              <td><%= link_to suggestion[category.name.to_sym].name, logs_path(id: suggestion[category.name.to_sym]), method: :post %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
     <hr>
   <% end %>
 
