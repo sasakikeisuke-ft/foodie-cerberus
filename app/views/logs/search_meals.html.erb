@@ -2,7 +2,10 @@
   <h1>本日の献立</h1>
   <%= render partial: "today_menu" %>
   <hr>
-  <%= @comment %>
+  <h2>
+    <%= image_tag "#{@icon}_icon", size: 64 unless @icon.nil? %>
+    <%= @comment %>での検索結果<br>
+  </h2>
   <% if @meals.empty? %>
     料理はまだ登録されていません
   <% else %>

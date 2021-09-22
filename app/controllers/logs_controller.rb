@@ -39,6 +39,7 @@ class LogsController < ApplicationController
     @logs = Log.includes(meal: :tags).where(user_id: current_user.id)
     @meals = content[:meals]
     @comment = content[:comment]
+    @icon = content[:icon] unless content[:icon] == ''
   end
 
   private
