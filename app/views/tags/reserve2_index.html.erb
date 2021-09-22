@@ -9,6 +9,7 @@
       <div class="row ">
         <% contents[category.name.to_sym].each do |tag| %>
           <div class="col-md-3">
+            <%= image_tag "#{tag.category.name}_icon", size: 32 %>
             <%= link_to tag.name, tag_path(tag) %>
           </div>
         <% end %>
