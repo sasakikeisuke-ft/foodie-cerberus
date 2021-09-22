@@ -5,7 +5,7 @@ class SearchMealsService
       if name == ''
         meals = Meal.where(user_id: user_id).order(:id)
         comment = '検索ワードが空欄でした。登録した順番に表示しています。'
-       else
+      else
         meals = Meal.where(user_id: user_id).where('name LIKE(?)', "%#{name}%")
         comment = "#{name}を含む料理名"
       end
@@ -39,11 +39,10 @@ class SearchMealsService
         icon = tag.category.name
       end
     end
-    content = {
+    {
       meals: meals,
       comment: comment,
       icon: icon
     }
-    content
   end
 end
