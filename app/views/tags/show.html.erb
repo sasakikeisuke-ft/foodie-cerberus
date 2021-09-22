@@ -14,6 +14,7 @@
   <div class="row">
     <% @tag.meals.each do |meal| %>
       <div class="col-md-4">
+        <%= image_tag "#{meal.category.name}_icon", size: 32 %>
         <%= link_to meal.name, withdraw_tag_path(meal_id: meal.id), method: :delete %>
       </div>
     <% end %>
@@ -24,6 +25,7 @@
   <div class="row">
     <% @meals.each do |meal| %>
       <div class="col-md-4">
+        <%= image_tag "#{meal.category.name}_icon", size: 32 %>
         <%= link_to meal.name, join_tag_path(meal_id: meal.id), method: :post %>
       </div>
     <% end %>
