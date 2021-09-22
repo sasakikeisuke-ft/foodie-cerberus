@@ -17,7 +17,7 @@
           <% @meals.each do |meal| %>
             <tr>
               <th><%= link_to meal.name, meal_path(meal) %></th>
-              <td><%= meal.category.name_ja %></td>
+              <td><%= image_tag "#{meal.category.name}_icon", size: 32 %><%= meal.category.name_ja %></td>
               <td><%= meal.price.select %></td>
               <td><%= meal.labor.select %></td>
               <td><%= meal.calorie.select %></td>
