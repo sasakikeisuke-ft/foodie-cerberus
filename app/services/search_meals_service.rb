@@ -1,12 +1,13 @@
 class SearchMealsService
   def self.search(name, search, user_id)
+    icon = ''
     if search.nil?
       if name == ''
         meals = Meal.where(user_id: user_id).order(:id)
         comment = '検索ワードが空欄でした。登録した順番に表示しています。'
-       else
+      else
         meals = Meal.where(user_id: user_id).where('name LIKE(?)', "%#{name}%")
-        comment = "検索: #{name}を含む料理名"
+        comment = "#{name}を含む料理名"
       end
     else
       case search[:type]
@@ -30,16 +31,18 @@ class SearchMealsService
       when 'category'
         meals = Meal.where(user_id: user_id, category_id: search[:id]).order(:last_day)
         comment = "カテゴリー: #{Category.find(search[:id]).name_ja}"
+        icon = Category.find(search[:id]).name
       when 'tag'
         tag = Tag.where(user_id: user_id).find(search[:id])
         meals = tag.meals
-        comment = "タグ: #{tag.name}"
+        comment = "#{tag.name}タグ"
+        icon = tag.category.name
       end
     end
-    content = {
+    {
       meals: meals,
-      comment: comment
+      comment: comment,
+      icon: icon
     }
-    content
   end
 end

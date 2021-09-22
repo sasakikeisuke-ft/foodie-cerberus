@@ -70,7 +70,7 @@ class TagsController < ApplicationController
   def common_variable2
     @tag = Tag.includes(:meals).find(params[:id])
     not_target_meals = MealTagRelation.where(tag_id: params[:id]).select(:meal_id)
-    @meals = Meal.where(user_id: current_user.id).where.not(id: not_target_meals).order(:last_day)
+    @meals = Meal.where(user_id: current_user.id).where.not(id: not_target_meals).order(:category_id)
   end
 
   def tag_form_variable

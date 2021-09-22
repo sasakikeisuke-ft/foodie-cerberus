@@ -11,7 +11,7 @@ module LogsHelper
     menu
   end
 
-  # 献立の提案を作成するメソッド
+  # 献立の提案を作成するメソッド。mealsはすでに古い順番となっている。
   def make_suggestion(meals)
     category_index = Category.where.not(id: 0)
     oldest_meals = make_oldest_meals(meals)
@@ -26,10 +26,8 @@ module LogsHelper
     meals.each do |meal|
       break if count == end_count
 
-      meal.tags.each do |tag|
-        next unless suggestion[tag.category.name.to_sym].nil?
-
-        suggestion[tag.category.name.to_sym] = meal
+      if suggestion[meal.category.name.to_sym].nil?
+        suggestion[meal.category.name.to_sym] = meal
         count += 1
       end
     end

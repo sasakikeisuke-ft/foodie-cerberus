@@ -73,7 +73,8 @@ class MealsController < ApplicationController
   private
 
   def meal_params
-    params.require(:meal).permit(:name, :last_day, :category_id, :link, :price_id, :calorie_id, :labor_id).merge(user_id: current_user.id)
+    params.require(:meal).permit(:name, :last_day, :category_id, :link, :price_id, :calorie_id,
+                                 :labor_id).merge(user_id: current_user.id)
   end
 
   def tag_params

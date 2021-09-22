@@ -14,7 +14,7 @@
           <% @tags.each do |tag| %>
             <tr>
               <th><%= link_to tag.name, tag_path(tag) %></th>
-              <td><%= tag.category.name_ja %></td>
+              <td><%= image_tag "#{tag.category.name}_icon", size: 32 %> <%= tag.category.name_ja %></td>
             </tr>
           <% end %>
         </tbody>

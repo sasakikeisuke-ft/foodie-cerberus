@@ -1,23 +1,38 @@
 <div class="container">
-  <h1>本日の献立</h1>
   <%= render partial: "today_menu" %>
   <hr>
 
-  <% unless @meals.empty? %>
+  <% unless @meals.length == 0 %>
     <% suggestion = make_suggestion(@meals) %>
     <h2>献立のご提案</h2>
-      登録されている料理から一品 ->
-      <%= link_to suggestion[:random].name, logs_path(id: suggestion[:random].id), method: :post %><br>
-      食べたのが最も昔の料理から一品 ->
-      <%= link_to suggestion[:oldest].name, logs_path(id: suggestion[:oldest].id), method: :post %><br>
-      <hr>
-      <h3>各カテゴリーから古いものを一つ</h3>
-      <% suggestion[:category_index].each do |category| %>
-        <% next if suggestion[category.name.to_sym].nil? %>
+    <div class="table-responsive">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>提案内容</th>
+            <th>料理(選択すると本日の献立に追加)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th>登録されている料理から一品</th>
+            <td><%= link_to suggestion[:random].name, logs_path(id: suggestion[:random].id), method: :post %></td>
+          </tr>
+          <tr>
+            <th>食べたのが最も昔の料理から一品</th>
+            <td><%= link_to suggestion[:oldest].name, logs_path(id: suggestion[:oldest].id), method: :post %></td>
+          </tr>
+          <% suggestion[:category_index].each do |category| %>
+            <% next if suggestion[category.name.to_sym].nil? %>
 
-        <%= category.name_ja %>から ->
-        <%= link_to suggestion[category.name.to_sym].name, logs_path(id: suggestion[category.name.to_sym]), method: :post %><br>
-      <% end %>
+            <tr>
+              <th>カテゴリー: <%= image_tag "#{category.name}_icon", size: 32 %> <%= category.name_ja %></th>
+              <td><%= link_to suggestion[category.name.to_sym].name, logs_path(id: suggestion[category.name.to_sym]), method: :post %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
     <hr>
   <% end %>
 
@@ -49,11 +64,16 @@
     <% end %>
     <br>
     カテゴリーで検索<br>
-    <% Category.all.each do |category| %>
-      <% next if category.id.zero? %>
+    <div class="row">
+      <% Category.all.each do |category| %>
+        <% next if category.id.zero? %>
 
-      <%= link_to "#{category.name_ja}", search_meals_logs_path(search: {type: 'category', id: category.id}) %>
-    <% end %><br>
+        <div class="col-md-3">
+          <%= image_tag "#{category.name}_icon", size: 32 %>
+          <%= link_to "#{category.name_ja}", search_meals_logs_path(search: {type: 'category', id: category.id}) %>
+        </div>
+      <% end %><br>
+    </div>
     日付で検索<br>
     <%= link_to '昔に食べた順番で検索', search_meals_logs_path(search: {type: 'last_day', id: 'ASC'}) %>
     <%= link_to '最近食べた順番で検索', search_meals_logs_path(search: {type: 'last_day', id: 'DESC'}) %>
@@ -61,7 +81,8 @@
     タグで検索<br>
   <div class="row">
     <% @tags.each do |tag| %>
-      <div class="col-md-4">
+      <div class="col-md-3">
+        <%= image_tag "#{tag.category.name}_icon", size: 32 %>
         <%= link_to "#{tag.name}", search_meals_logs_path(search: {type: 'tag', id: tag.id}) %>
       </div>
     <% end %>

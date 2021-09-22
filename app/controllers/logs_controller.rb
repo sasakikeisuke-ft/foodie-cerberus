@@ -39,13 +39,14 @@ class LogsController < ApplicationController
     @logs = Log.includes(meal: :tags).where(user_id: current_user.id)
     @meals = content[:meals]
     @comment = content[:comment]
+    @icon = content[:icon] unless content[:icon] == ''
   end
 
   private
 
   def common_variable1
     @logs = Log.includes(meal: :tags).where(user_id: current_user.id)
-    @meals = Meal.includes(:tags).where(user_id: current_user.id).where.not(id: @logs.select(:meal_id)).order(:last_day)
+    @meals = Meal.where(user_id: current_user.id).where.not(id: @logs.select(:meal_id)).order(:last_day)
     @tags = Tag.where(user_id: current_user.id).order(:category_id)
   end
 end
