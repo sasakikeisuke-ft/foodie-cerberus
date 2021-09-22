@@ -4,6 +4,9 @@
     <div class="col-3">
       <%= link_to 'タグの編集へ', edit_tag_path(@tag), class: "btn btn-primary" %>
     </div>
+    <div class="col-3">
+      <%= link_to 'このタグで検索', search_meals_logs_path(search: {type: 'tag', id: @tag.id}), class: "btn btn-success" %>
+    </div>
   </div>
   <hr>
   <h4>このタグが登録されている料理</h4>
