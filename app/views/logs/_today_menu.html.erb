@@ -43,7 +43,7 @@
     <% menu[:tags].each do |tag| %>
       <div class="col-md-3">
         <%= image_tag "#{tag.category.name}_icon", height: 32 %>
-        <%= tag.name %>
+        <%= link_to tag.name, tag_path(id: tag.id) %>
       </div>
     <% end %>
   </div>
