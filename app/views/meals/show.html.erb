@@ -1,11 +1,11 @@
 <div class="container-md">
-  <h2><%= @meal.name %></h2>
+  <h2><%= image_tag "#{@meal.category.name}_icon" %> <%= @meal.name %></h2>
   <div class="table-responsive">
     <table class="table">
       <tbody>
         <tr>
           <th>カテゴリー</td>
-          <td><%= @meal.category.name_ja %><td>
+          <td><%= image_tag "#{@meal.category.name}_icon", size: 32 %> <%= @meal.category.name_ja %><td>
         </tr>
         <tr>
           <th>値段</td>
@@ -47,7 +47,8 @@
   <p>クリックすることで、対象のタグを外すことができます。</p>
   <div class="row">
     <% @meal.tags.each do |tag| %>
-      <div class="col-2">
+      <div class="col-md-3">
+        <%= image_tag "#{tag.category.name}_icon", size: 32 %>
         <%= link_to tag.name, remove_tag_meal_path(tag_id: tag.id), method: :delete %>
       </div>
     <% end %>
@@ -57,7 +58,8 @@
   <p>クリックすることで、対象のタグをつけることができます。</p>
   <div class="row">
     <% @tags.each do |tag| %>
-      <div class="col-2">
+      <div class="col-md-3">
+        <%= image_tag "#{tag.category.name}_icon", size: 32 %>
         <%= link_to tag.name, add_tag_meal_path(tag_id: tag.id), method: :post %>
       </div>
     <% end %>
