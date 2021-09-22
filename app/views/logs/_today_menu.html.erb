@@ -1,5 +1,5 @@
 <h1>本日の献立</h1>
-<% if @logs.empty? %>
+<% if @logs.length == 0 %>
   本日の献立はまだ登録されていません。
 <% else %>
   <% menu = make_menu(@logs) %>

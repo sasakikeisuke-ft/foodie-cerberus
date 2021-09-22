@@ -2,7 +2,7 @@
   <%= render partial: "today_menu" %>
   <hr>
 
-  <% unless @meals.empty? %>
+  <% unless @meals.length == 0 %>
     <% suggestion = make_suggestion(@meals) %>
     <h2>献立のご提案</h2>
       登録されている料理から一品 ->
