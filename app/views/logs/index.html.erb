@@ -14,7 +14,7 @@
       <% suggestion[:category_index].each do |category| %>
         <% next if suggestion[category.name.to_sym].nil? %>
 
-        <%= category.name_ja %>から ->
+        <%= image_tag "#{category.name}_icon", size: 32 %> <%= category.name_ja %>から ->
         <%= link_to suggestion[category.name.to_sym].name, logs_path(id: suggestion[category.name.to_sym]), method: :post %><br>
       <% end %>
     <hr>
