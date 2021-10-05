@@ -1,7 +1,18 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+user = User.create(nickname: 'sample_user', email: 'sample@sample.jp', password: 'a1234567')
+meal = Meal.create(name: '鶏の唐揚げ', last_day: '2021-09-01', category_id: 1, price_id: 3, calorie_id: 3, labor_id: 3, user_id: user.id)
+Meal.create(name: '刺身の盛り合わせ', last_day: '2021-09-02', category_id: 2, price_id: 3, calorie_id: 3, labor_id: 1, user_id: user.id)
+Meal.create(name: '野菜鍋', last_day: '2021-09-06', category_id: 3, price_id: 2, calorie_id: 1, labor_id: 2, user_id: user.id)
+Meal.create(name: '豚肉カレー', last_day: '2021-09-04', category_id: 4, price_id: 2, calorie_id: 3, labor_id: 2, user_id: user.id)
+Meal.create(name: 'チーズおつまみセット', last_day: '2021-09-05', category_id: 5, price_id: 1, calorie_id: 1, labor_id: 1, user_id: user.id)
+Meal.create(name: 'そば', last_day: '2021-09-07', category_id: 6, price_id: 1, calorie_id: 2, labor_id: 1, user_id: user.id)
+Meal.create(name: '〇〇軒(ラーメン屋)', last_day: '2021-09-06', category_id: 7, price_id: 3, calorie_id: 3, labor_id: 2, user_id: user.id)
+Meal.create(name: '豚トロ丼', last_day: '2021-09-08', category_id: 8, price_id: 1, calorie_id: 3, labor_id: 1, user_id: user.id)
+Meal.create(name: 'カルボナーラの素', last_day: '2021-09-03', category_id: 9, price_id: 1, calorie_id: 2, labor_id: 1, user_id: user.id)
+tag = Tag.create(name: '鶏肉', category_id: 1, user_id: user.id)
+Tag.create(name: 'マグロ', category_id: 2, user_id: user.id)
+Tag.create(name: '白菜', category_id: 3, user_id: user.id)
+Tag.create(name: 'チーズ', category_id: 5, user_id: user.id)
+Tag.create(name: '〇〇(コンビニ)', category_id: 7, user_id: user.id)
+Tag.create(name: '日清グループ(ブランド)', category_id: 9, user_id: user.id)
+Tag.create(name: 'お弁当に使える', category_id: 10, user_id: user.id)
+MealTagRelation.create(meal_id: meal.id, tag_id: tag.id)
