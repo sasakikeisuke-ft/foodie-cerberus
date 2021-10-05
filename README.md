@@ -36,13 +36,13 @@ Password: a1234567
 - 外部サイトへのリンク(参考にした献立ページへのリンクを登録)
 
 ### 登録フォーム
-![登録フォーム](https://gyazo.com/f99d2ad72b16b42e4358a2dddc74eb07)
+![登録フォーム](https://i.gyazo.com/f99d2ad72b16b42e4358a2dddc74eb07.png)
 
 ### 一覧画面
-![一覧画面](https://gyazo.com/aff386e1f7863313354e1e065c180d7a)
+![一覧画面](https://i.gyazo.com/aff386e1f7863313354e1e065c180d7a.png)
 
 ### 料理の詳細画面
-![料理の詳細画面](https://gyazo.com/00d24c8205538deda870cd794099d236)
+![料理の詳細画面](https://i.gyazo.com/00d24c8205538deda870cd794099d236.png)
 
 ## タグ登録機能
 料理の詳細画面で、料理にタグをつけることができます。<br>
@@ -57,7 +57,7 @@ Password: a1234567
 また、献立に登録したタグの一覧も表示されます。<br>
 「食事の報告」ボタンを押すことで、各料理に登録されている「最後に食べた日」が当日に更新されます。<br>
 
-![本日の献立](https://gyazo.com/69fe766ec8414e9f8a288ea8b814a089)
+![本日の献立](https://i.gyazo.com/69fe766ec8414e9f8a288ea8b814a089.png)
 
 
 ## 献立の提案機能
@@ -67,7 +67,7 @@ Password: a1234567
 - 「各ジャンルから最も昔に食べた一品」
 を提案します。
 
-![献立のご提案](https://gyazo.com/1cce798dd40749095e1e4844b3ef1115)
+![献立のご提案](https://i.gyazo.com/1cce798dd40749095e1e4844b3ef1115.png)
 
 
 ## 料理検索機能
@@ -81,7 +81,7 @@ Password: a1234567
 - 最後に食べた日(降順、昇順)
 - タグ
 
-![検索](https://gyazo.com/beae8dabcc737c323c1cbd899bc925cb)
+![検索](https://i.gyazo.com/beae8dabcc737c323c1cbd899bc925cb.png)
 
 
 
